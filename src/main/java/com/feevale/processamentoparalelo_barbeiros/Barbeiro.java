@@ -37,7 +37,7 @@ public class Barbeiro extends Thread {
         while(true) {
             this.atender();
             try {
-                Thread.sleep((int)Math.random() * 200);
+                Thread.sleep((int)(Math.random() * 500));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

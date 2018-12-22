@@ -18,7 +18,7 @@ public class GeradorClientes extends Thread {
     }
     
     public void geraClientes() {
-        int qtdNovosClientes = (int)Math.random() * 5;
+        int qtdNovosClientes = (int)(Math.random() * 6);
         for (int i = 0; i <= qtdNovosClientes; i++) {
             synchronized (cadeiras) {
                 if (cadeiras.temCadeiraVaga()) {
@@ -36,7 +36,7 @@ public class GeradorClientes extends Thread {
         while(true) {
             this.geraClientes();
             try {
-                Thread.sleep((int)Math.random() * 50);
+                Thread.sleep((int)(Math.random() * 500));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
