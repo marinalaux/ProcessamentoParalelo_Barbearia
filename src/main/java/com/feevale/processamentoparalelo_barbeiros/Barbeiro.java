@@ -21,9 +21,12 @@ public class Barbeiro extends Thread {
         synchronized (cadeiras) {
             if (cadeiras.temCliente()) {
                 cadeiras.atendeCliente();
-                System.out.println("[" + LocalDateTime.now() + "]" + " Barbeiro " + this.getName() + " está atendendo um cliente. Ainda restam " + cadeiras.qtdCadeirasOcupadas() + " clientes esperando.");
+                System.out.println("[" + LocalDateTime.now() + "]"
+                        + " Barbeiro " + this.getName() + " está atendendo um cliente. Ainda restam "
+                        + cadeiras.qtdCadeirasOcupadas() + " clientes esperando.");
             } else {
-                System.out.println("[" + LocalDateTime.now() + "]" + " Barbeiro " + this.getName() + " dormiu.");
+                System.out.println("[" + LocalDateTime.now() + "]"
+                        + " Barbeiro " + this.getName() + " dormiu.");
                 try {
                     cadeiras.wait();
                 } catch (InterruptedException ex) {
@@ -34,10 +37,10 @@ public class Barbeiro extends Thread {
     }
     
     public void run() {
-        while(true) {
+        while (true) {
             this.atender();
             try {
-                Thread.sleep((int)(Math.random() * 500));
+                Thread.sleep((int) (Math.random() * 500));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

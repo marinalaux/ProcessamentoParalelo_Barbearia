@@ -37,14 +37,25 @@ public class ListaCadeiras {
         return qtdCadeirasOcupadas() < QTD_LUGARES;
     }
     
+    /**
+     * Retorna a quantidade de cadeiras ocupadas na barbearia
+     * 
+     * @return Quantidade de cadeiras ocupadas
+     */
     public int qtdCadeirasOcupadas() {
         return cadeiras.size();
     }
     
+    /**
+     * Adiciona um cliente em uma cadeira vaga
+     */
     public void alocaCadeira() {
         cadeiras.add(true);
     }
     
+    /**
+     * Atende um cliente que aguardava na cadeira
+     */
     public void atendeCliente() {
         cadeiras.remove(0);
     }

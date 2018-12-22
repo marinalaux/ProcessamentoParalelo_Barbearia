@@ -18,25 +18,28 @@ public class GeradorClientes extends Thread {
     }
     
     public void geraClientes() {
-        int qtdNovosClientes = (int)(Math.random() * 6);
+        int qtdNovosClientes = (int) (Math.random() * 6);
         for (int i = 0; i <= qtdNovosClientes; i++) {
             synchronized (cadeiras) {
                 if (cadeiras.temCadeiraVaga()) {
                     cadeiras.alocaCadeira();
                     cadeiras.notifyAll();
-                    System.out.println("[" + LocalDateTime.now() + "]" + " Um novo cliente chegou na barbearia. Existem " + cadeiras.qtdCadeirasOcupadas() + " clientes esperando.");
+                    System.out.println("[" + LocalDateTime.now() + "]"
+                            + " Um novo cliente chegou na barbearia. Existem "
+                            + cadeiras.qtdCadeirasOcupadas() + " clientes esperando.");
                 } else {
-                    System.out.println("[" + LocalDateTime.now() + "]" + " Um novo cliente chegou, a barbearia já estava lotada e foi embora.");
+                    System.out.println("[" + LocalDateTime.now() + "]"
+                            + " Um novo cliente chegou, a barbearia já estava lotada e foi embora.");
                 }
             }
         }
     }
     
     public void run() {
-        while(true) {
+        while (true) {
             this.geraClientes();
             try {
-                Thread.sleep((int)(Math.random() * 500));
+                Thread.sleep((int) (Math.random() * 500));
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
